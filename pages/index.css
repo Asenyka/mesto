@@ -11,7 +11,7 @@
   }
 
   .header {
-    padding: calc(2800vw/320) calc(2700vw/320) calc(3100vw/320);
+    padding: 28px calc(2700vw/320) 31.6px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
     display: flex;
     justify-content: left;
@@ -21,18 +21,56 @@
   @media screen and (min-width: 1024px) {
     .header{
         padding: 0 0 41px;
-        margin: 45px 200px;
+        margin: 45px calc(20000vw/1280);
     }
   }
 
   .header__logo{
     width: calc(10400vw/320);
     max-width: 142px;
-    height: auto;
+    height: calc(2440vw/320);
+    object-fit: contain;
  }
 
+ .popup{
+  position:absolute;
+  top: 0;
+  left: 0;
+  background-color:rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  padding-top: 87px;
+ }
+
+ .popup__container{
+  margin: 0 auto;
+  padding: 25px 22px;
+  width: 238px;
+  height: 272px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+   }
+  .popup__close-button-img{
+    width: 20px;
+    height:20px;}
+  .popup__close-button{
+    background-color: #000000;
+    border: solid white;
+    padding: 0;
+    align-self: end;
+    margin-right: calc(1900vw/320);
+  }
+
+
+  
  .profile{
-    margin: 36px 19px;
+    margin: 38.25px 19px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +78,7 @@
 
   @media screen and (min-width: 1024px) {
     .profile{
-    margin: 36px 200px; 
+    margin: 36px calc(20000vw/1280); 
       display: grid;
       grid-template-columns: 148px calc(58400vw/1280) 150px;
       grid-template-rows: auto;
@@ -88,7 +126,7 @@ margin: 14px 0 36px;
 
 
 .profile__info{
-    margin-left: calc(2800vw/320);
+    margin-left: 28px;
     margin-top: 22px;
     display: grid;
    grid-template-columns: 189px 18px;
@@ -235,7 +273,10 @@ padding: 25px 20px 30px;
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
-     color: #000000;  
+    color: #000000;  
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .places__heart {
@@ -246,12 +287,12 @@ padding: 25px 20px 30px;
 
 .footer{
     display: flex;
-    margin: 48px 19px 36px; 
+    margin: 48px calc(1900vw/320) 36px; 
 }
 
 @media screen and (min-width: 1024px) {
   .footer{
-    margin: 67px 200px 60px;
+    margin: 67px calc(20000vw/1280) 60px;
   }
 }
 
