@@ -1,0 +1,11 @@
+.popup__close-button {
+    background-color: rgba(0, 0, 0, 1);
+    border: none;
+    padding: 0;
+    margin-bottom: 16px;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  .popup__close-button:hover {
+    opacity: 0.6;
+  }

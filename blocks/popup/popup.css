@@ -1,0 +1,17 @@
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    padding-top: 87px;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .popup {
+      padding-top: 195px;
+    }
+  }
