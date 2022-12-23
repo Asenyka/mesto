@@ -11,21 +11,15 @@ function popupShow(event) {
   nameInput.value = profileName.innerHTML;
   jobInput.value = profileJob.innerHTML;
 }
-editButton.addEventListener("click", popupShow);
-
-
 function popupHide(event) {
   popup.classList.remove('popup_opened');
 }
-closeButton.addEventListener("click", popupHide);
-
-
-
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   popupHide();
 }
-
+editButton.addEventListener("click", popupShow);
+closeButton.addEventListener("click", popupHide);
 formElement.addEventListener("submit", handleFormSubmit, popupHide);
