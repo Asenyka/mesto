@@ -8,76 +8,37 @@
   </head>
 
   <body class="page">
-    <section class="popup">
-      <div class="popup__container-with-close-button">
-        <button class="popup__close-button">
-          <img
-            class="popup__close-button-img"
-            src="./images/mobile/close-button.png"
-            alt="Кнопка закрытия"
-          >
-        </button>
-        <div class="popup__container">
-          <h2 class="popup__heading">Редактировать профиль</h2>
-          <form class="popup__form" method="get">
-            <p class="popup__paragraph">
-              <input
-                class="popup__name popup__input"
-                type="text"
-                name="name"
-                id="name"
-              >
-            </p>
-            <p class="popup__paragraph">
-              <input
-                class="popup__job popup__input"
-                type="text"
-                name="job"
-                id="job"
-              >
-            </p>
-            <button class="popup__button" type="submit">Сохранить</button>
-          </form>
-        </div>
-      </div>
-    </section>
     <header class="header">
       <img
         class="header__logo"
-        src="./images/mobile/header__logo.svg"
+        src="./images/header__logo.svg"
         alt="Логотип"
       >
     </header>
-    <main>
+    <main class="main">
       <section class="profile">
         <img
           class="profile__pic"
-          src="./images/mobile/profile__pic.png"
+          src="./images/profile__pic.png"
           alt="Фото профиля"
         >
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button">
+          <button class="profile__edit-button button" type="button">
             <img
               class="profile__edit-button-img"
-              src="./images/mobile/edit-button.png"
+              src="./images/edit-button.svg"
               alt="Иконка кнопки"
             >
           </button>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <button class="profile__add-button">
-          <picture>
-            <source
-              srcset="./images/desktop/profile__add-button.png"
-              media="(min-width: 1024px)"
-            >
+        <button class="profile__add-button button" type="button">
             <img
               class="profile__add-button-img"
-              src="./images/mobile/add-button.png"
+              src="./images/add-button.svg"
               alt="Иконка кнопки"
             >
-          </picture>
         </button>
       </section>
       <section class="places">
@@ -85,75 +46,100 @@
           <li class="places__item">
             <img
               class="places__image"
-              src="./images/mobile/bermamyt.jpg"
+              src="./images/bermamyt.jpg"
               alt="Фотография плато Бермамыт"
             >
             <div class="places__title-heart">
               <h2 class="places__title">Плато Бермамыт</h2>
-              <span class="places__heart"></span>
+              <button class="places__heart button" type="button"></button>
             </div>
           </li>
           <li class="places__item">
             <img
               class="places__image"
-              src="./images/mobile/divnogorsk.jpg"
+              src="./images/divnogorsk.jpg"
               alt="Фотография Дивногорска"
             >
             <div class="places__title-heart">
               <h2 class="places__title">Дивногорск</h2>
-              <span class="places__heart"></span>
+              <button class="places__heart button" type="button"></button>
             </div>
           </li>
           <li class="places__item">
             <img
               class="places__image"
-              src="./images/mobile/elton.jpg"
+              src="./images/elton.jpg"
               alt="Фотография озера Эльтон"
             >
             <div class="places__title-heart">
               <h2 class="places__title">Озеро Эльтон</h2>
-              <span class="places__heart"></span>
+              <button class="places__heart button" type="button"></button>
             </div>
           </li>
           <li class="places__item">
             <img
               class="places__image"
-              src="./images/mobile/khibiny.jpg"
+              src="./images/khibiny.jpg"
               alt="Фотография Хибин"
             >
             <div class="places__title-heart">
               <h2 class="places__title">Хибины</h2>
-              <span class="places__heart"></span>
+              <button class="places__heart button" type="button"></button>
             </div>
           </li>
           <li class="places__item">
             <img
               class="places__image"
-              src="./images/mobile/ruskeala.jpg"
+              src="./images/ruskeala.jpg"
               alt="Фотография парка Рускеала"
             >
             <div class="places__title-heart">
               <h2 class="places__title">Рускеала</h2>
-              <span class="places__heart"></span>
+              <button class="places__heart button" type="button"></button>
             </div>
           </li>
           <li class="places__item">
             <img
               class="places__image"
-              src="./images/mobile/usyvinskie_stolby.jpg"
+              src="./images/usyvinskie_stolby.jpg"
               alt="Фотография Усьвинских Столбов"
             >
             <div class="places__title-heart">
               <h2 class="places__title">Усьвинские столбы</h2>
-              <span class="places__heart"></span>
+              <button class="places__heart button" type="button"></button>
             </div>
           </li>
         </ul>
       </section>
     </main>
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close-button button" type="button">
+          <img
+            class="popup__close-button-img"
+            src="./images/close-button.svg"
+            alt="Кнопка закрытия"
+          >
+        </button>
+          <form class="popup__form" method="get" name="form">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <input
+                class="popup__input popop__input_box_name"
+                type="text"
+                name="name"
+              >
+            <input
+                class="popup__input popup__input_box_job"
+                type="text"
+                name="job"
+              >
+            <button class="popup__button button" type="submit">Сохранить</button>
+          </form>
+      </div>
+    </section>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

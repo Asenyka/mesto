@@ -1,13 +1,11 @@
 .profile__add-button-img {
-  width: 282px;
-  height: 50px;
+  width: 16px;
   object-fit: contain;
-  cursor: pointer;
 }
 
 
 @media screen and (min-width: 1024px) {
   .profile__add-button-img {
-    width: 150px;
+    width: 22px;
   }
 }
