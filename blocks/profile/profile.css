@@ -12,7 +12,7 @@
       margin-right: calc(2500vw / 1280);
       margin-bottom: 47.25px;
       display: grid;
-      grid-template-columns: 168.75px calc(71600vw / 1280 - 125px) 150px;
+      grid-template-columns: 168.75px minmax(583px, 1fr) 150px;
       grid-template-rows: auto;
     }
   }

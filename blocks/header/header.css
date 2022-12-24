@@ -9,6 +9,7 @@
   @media screen and (min-width: 1024px) {
     .header {
       padding: 0 0 41px;
-      margin: 45px calc(20000vw / 1280) 0;
+      margin: 45px 0 0;
     }
   }
+
