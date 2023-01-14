@@ -92,3 +92,15 @@ function renderCards(texts) {
 }
 
 renderCards(initialCards);
+
+document.querySelectorAll('.places__heart').onclick = toggleHeart;
+function toggleHeart(){
+
+}
+
+const heartButton = document.querySelectorAll('.places__heart');
+heartButton.forEach(heartButton => {
+  heartButton.addEventListener ('click', toggle => {
+    heartButton.classList.toggle('places__heart_active');
+  })
+});
