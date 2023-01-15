@@ -14,6 +14,7 @@ const addContainer = document.querySelector('.popup__add-container');
 const addButton = document.querySelector('.profile__add-button');
 const createCardButton = document.querySelector('.popup__button_create')
 const cardsContainer = document.querySelector('.places__list');
+
 const cardTemplate = document
 	.querySelector('.places__template')
 	.content
@@ -45,13 +46,8 @@ const initialCards = [
   }
 ]; 
 
-const newCardObject = {
-  name: 'Привет',
-  link: 'dis[plclsm]'
-}
-function addUserCard(){
-  initialCards.unshift(newCardObject);
-}
+
+
 
 function popupShow(event) {
   popup.classList.add('popup_opened');
@@ -84,8 +80,10 @@ function handleFormSubmit(evt) {
   profileJob.textContent = jobInput.value;
   popupHide();
   editContHide();
-  addContHide();
 }
+
+
+
 
 editButton.addEventListener('click', ()=>{
   popupShow();
@@ -106,13 +104,7 @@ closeButton.forEach(closeButton => {
 })
 
 formElement.addEventListener('submit', handleFormSubmit, popupHide);
-formElementCreate.addEventListener('submit', addUserCard, renderCards);
-
-
-function cloneCard(event) {
-	const clonedCard = event.target.closest('.places__item').cloneNode(true);
-	addCard(clonedCard);
-}
+formElementCreate.addEventListener('submit', submitCard);
 
 
 function createCard(newCard) {
@@ -127,10 +119,20 @@ function createCard(newCard) {
 
 function addCard(card) {
 	cardsContainer.prepend(card);
-}
+  const bin = document.querySelector('.places__bin');
+  bin.addEventListener('click', () =>{
+  bin.parentElement.remove();
+  })
+  const heartButton = document.querySelector('.places__heart');
+  heartButton.addEventListener ('click', () => {
+  heartButton.classList.toggle('places__heart_active');
+  }); 
+};
 
-function renderCards(texts) {
-	texts.reverse().forEach(item => {
+
+
+function renderCards(cards) {
+	cards.forEach(item => {
 		const cardHtml = createCard(item);
 		addCard(cardHtml);
 	});
@@ -139,10 +141,22 @@ function renderCards(texts) {
 renderCards(initialCards);
 
 
-const heartButton = document.querySelectorAll('.places__heart');
-heartButton.forEach(heartButton => {
-  heartButton.addEventListener ('click', toggle => {
-    heartButton.classList.toggle('places__heart_active');
-  })
-});
+function resetForm(){
+  titleInput.value='';
+  linkInput.value='';
+}
+function submitCard (evt) {
+  evt.preventDefault();
+  const newCardObject = {
+    name: titleInput.value,
+    link: linkInput.value}
+ const cardHtml = createCard(newCardObject);
+  addCard(cardHtml);
+  resetForm();
+  addContHide();
+  popupHide();
+
+}
+
+
 
