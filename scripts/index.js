@@ -4,27 +4,63 @@ const nameInput = document.querySelector('.popup__input_box_name');
 const jobInput = document.querySelector('.popup__input_box_job');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-const closeButton = document.querySelector('.popup__close-button');
+const closeButton = document.querySelectorAll('.popup__close-button');
 const formElement = document.querySelector('.popup__form');
+const editContainer = document.querySelector('.popup__container');
+const addContainer = document.querySelector('.popup__add-container');
+const addButton = document.querySelector('.profile__add-button');
 
 function popupShow(event) {
   popup.classList.add('popup_opened');
+}
+
+function editContShow(event) {
+  editContainer.classList.add('popup__container_shown');
   nameInput.value = profileName.innerHTML;
   jobInput.value = profileJob.innerHTML;
 }
+
+function editContHide (event) {
+  editContainer.classList.remove('popup__container_shown');
+}
+function addContShow (event) {
+  addContainer.classList.add('popup__add-container_shown');
+}
+function addContHide (event) {
+  addContainer.classList.remove('popup__add-container_shown');
+}
+
+
 function popupHide(event) {
   popup.classList.remove('popup_opened');
-}
+  }
+
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   popupHide();
+  editContHide();
+  addContHide();
 }
 
-editButton.addEventListener('click', popupShow);
+editButton.addEventListener('click', ()=>{
+  popupShow();
+  editContShow();
+});
 
-closeButton.addEventListener('click', popupHide);
+addButton.addEventListener('click', ()=>{
+  popupShow();
+  addContShow();
+});
+
+closeButton.forEach(closeButton => {
+  closeButton.addEventListener('click', () =>{
+    popupHide();
+    editContHide();
+    addContHide();
+  })
+})
 
 formElement.addEventListener('submit', handleFormSubmit, popupHide);
 
@@ -104,3 +140,4 @@ heartButton.forEach(heartButton => {
     heartButton.classList.toggle('places__heart_active');
   })
 });
+
