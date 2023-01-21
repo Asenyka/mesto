@@ -78,8 +78,7 @@ function hidePopup() {
   popup.classList.remove("popup_opened");
 }
 
-function handleFormSubmit(evt) {
-  evt.preventDefault();
+function handleFormSubmit() {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   hidePopup();
