@@ -1,3 +1,4 @@
 .popup__container_shown{
-display: flex;
+opacity: 100;
+z-index: 1;
 }

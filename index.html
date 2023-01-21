@@ -9,11 +9,7 @@
 
   <body class="page">
     <header class="header">
-      <img
-        class="header__logo"
-        src="./images/header__logo.svg"
-        alt="Логотип"
-      >
+      <img class="header__logo" src="./images/header__logo.svg" alt="Логотип">
     </header>
     <main class="main">
       <section class="profile">
@@ -34,14 +30,14 @@
           <p class="profile__job">Исследователь океана</p>
         </div>
         <button class="profile__add-button button" type="button">
-            <img
-              class="profile__add-button-img"
-              src="./images/add-button.svg"
-              alt="Иконка кнопки"
-            >
+          <img
+            class="profile__add-button-img"
+            src="./images/add-button.svg"
+            alt="Иконка кнопки"
+          >
         </button>
       </section>
-      <section class="places">
+      <section class="places" aria-label="Галлерея живописных мест">
         <ul class="places__list"></ul>
       </section>
     </main>
@@ -54,20 +50,20 @@
             alt="Кнопка закрытия"
           >
         </button>
-          <form class="popup__form" method="get" name="form">
-            <h2 class="popup__heading">Редактировать профиль</h2>
-            <input
-                class="popup__input popup__input_box_name"
-                type="text"
-                name="name"
-              >
-            <input
-                class="popup__input popup__input_box_job"
-                type="text"
-                name="job"
-              >
-            <button class="popup__button button" type="submit">Сохранить</button>
-          </form>
+        <form class="popup__form" method="get" name="form">
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <input
+            class="popup__input popup__input_box_name"
+            type="text"
+            name="name"
+          >
+          <input
+            class="popup__input popup__input_box_job"
+            type="text"
+            name="job"
+          >
+          <button class="popup__button button" type="submit">Сохранить</button>
+        </form>
       </div>
       <div class="popup__add-container">
         <button class="popup__close-button button" type="button">
@@ -77,22 +73,42 @@
             alt="Кнопка закрытия"
           >
         </button>
-          <form class="popup__form popup__form_create" method="get" name="form">
-            <h2 class="popup__heading">Новое место</h2>
-            <input
-                class="popup__input popup__input_box_title"
-                type="text"
-                name="title"
-                placeholder="Название"
-              >
-            <input
-                class="popup__input popup__input_box_link"
-                type="link"
-                name="link"
-                placeholder="Ссылка на картинку"
-              >
-            <button class="popup__button popup__button_create button" type="submit">Создать</button>
-          </form>
+        <form class="popup__form popup__form_create" method="get" name="form">
+          <h2 class="popup__heading">Новое место</h2>
+          <input
+            class="popup__input popup__input_box_title"
+            type="text"
+            name="title"
+            placeholder="Название"
+          >
+          <input
+            class="popup__input popup__input_box_link"
+            type="link"
+            name="link"
+            placeholder="Ссылка на картинку"
+          >
+          <button
+            class="popup__button popup__button_create button"
+            type="submit"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
+      <div class="popup__picture-container">
+        <button class="popup__close-button button" type="button">
+          <img
+            class="popup__close-button-img"
+            src="./images/close-button.svg"
+            alt="Кнопка закрытия"
+          >
+        </button>
+        <img
+          class="popup__picture"
+          src=""
+          alt="Изображение в оригинальном размере"
+        >
+        <p class="popup__caption"></p>
       </div>
     </section>
     <footer class="footer">
@@ -100,20 +116,16 @@
     </footer>
     <template class="places__template">
       <li class="places__item">
-        <img
-          class="places__image"
-        >
+        <img class="places__image" >
         <div class="places__title-heart">
           <h2 class="places__title"></h2>
           <button class="places__heart button" type="button"></button>
         </div>
-        <button
-        class="places__bin button">
-        <img
-        src="./images/bin.svg">
+        <button class="places__bin button">
+          <img src="./images/bin.svg" >
         </button>
       </li>
-      </template>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
