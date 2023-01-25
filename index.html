@@ -41,8 +41,8 @@
         <ul class="places__list"></ul>
       </section>
     </main>
-    <section class="popup">
-      <div class="popup__container">
+    <section class="popup popup_edit-profile">
+      <div class="popup__container popup__container_edit-profile">
         <button class="popup__close-button button" type="button">
           <img
             class="popup__close-button-img"
@@ -56,16 +56,20 @@
             class="popup__input popup__input_box_name"
             type="text"
             name="name"
+            placeholder="Имя"
           >
           <input
             class="popup__input popup__input_box_job"
             type="text"
             name="job"
+            placeholder="Вид деятельности"
           >
           <button class="popup__button button" type="submit">Сохранить</button>
         </form>
       </div>
-      <div class="popup__add-container">
+      </section>
+      <section class="popup popup_add-card">
+      <div class="popup__container popup__container_add-card">
         <button class="popup__close-button button" type="button">
           <img
             class="popup__close-button-img"
@@ -95,6 +99,8 @@
           </button>
         </form>
       </div>
+      </section>
+      <section class="popup popup_image">
       <div class="popup__picture-container">
         <button class="popup__close-button button" type="button">
           <img
