@@ -1,8 +1,8 @@
 .popup__container {
     position: absolute;
     top:50vh;
-left:50vw;
-transform:translate(-50%, -50%);
+    left:50vw;
+    transform:translate(-50%, -50%);
     width: 282px;
     margin: 0;
     display: flex;
@@ -11,8 +11,6 @@ transform:translate(-50%, -50%);
     background-color: #ffffff;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    opacity: 0;
-    transition: opacity .5s;
   }
   @media screen and (min-width: 1024px) {
     .popup__container {

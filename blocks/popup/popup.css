@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: all 1s ease;
   visibility: hidden;
-  transition: 0.5s;
+  opacity: 0;
 }
