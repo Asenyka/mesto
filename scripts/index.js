@@ -131,12 +131,10 @@ buttonClose.addEventListener('click', () => {
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   openPopup(popupEditProfile);
   showPofileInfo();
-  showPopupCont(containerEditProfile);
 });
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
   openPopup(popupAddCard);
-  showPopupCont(containerAddCard);
 });
 
 
