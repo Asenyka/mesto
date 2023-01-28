@@ -55,8 +55,19 @@ const initialCards = [
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown',(evt)=> {
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+    }
+  });
+  popup.addEventListener('click', (evt)=>{
+ if (evt.target.classList.contains('popup')){
+  closePopup(popup);
+ }
+  })
  }
 
 function showPofileInfo(){
@@ -121,6 +132,8 @@ function submitCard(evt) {
   closePopup(popupAddCard);
 }
 
+
+
 renderCards(initialCards);
 
 buttonClose.forEach((buttonClose) =>
@@ -140,3 +153,4 @@ buttonOpenAddCardPopup.addEventListener('click', () => {
 
 formEditProfile.addEventListener('submit', submitEditProfileForm, closePopup(popupEditProfile));
 formElementCreate.addEventListener('submit', submitCard);
+
