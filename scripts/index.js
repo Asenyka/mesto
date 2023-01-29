@@ -8,7 +8,7 @@ const titleInput = document.querySelector('.popup__input_box_title');
 const linkInput = document.querySelector('.popup__input_box_link');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-const formEditProfile = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.popup__form_edit');
 const formElementCreate = document.querySelector('.popup__form_create');
 const containerEditProfile = document.querySelector('.popup__container_edit-profile');
 const containerAddCard = document.querySelector('.popup__container_add-card');
@@ -58,6 +58,9 @@ function closePopup(popup) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  const popupButton=popup.querySelector('.popup__button');
+  popupButton.setAttribute('disabled','');
+  popupButton.classList.add('button_inactive');
   document.addEventListener('keydown',(evt)=> {
   if (evt.key === 'Escape') {
     closePopup(popup);

@@ -1,74 +1,37 @@
-/*const formEditProfile = document.forms.formEdit;
-const formCreateCard = document.forms.formCreate;
 
-const inputSelector = formSelector.querySelectorAll('.popup__input');
-const submitButtonSelector=document.querySelectorAll('.popup__button');
-const inactiveButtonClass=document.querySelectorAll('popup__button_disabled');
-const inputErrorClass = document.querySelectorAll('popup__input_type_error');
-const errorClass = document.querySelectorAll ('popup__error_visible');
-const formError = formSelector.querySelector(`.${inputSelector}-error`);
-
-formSelector.addEventListener('submit', (evt) =>{
- evt.preventDefault();
-})
-
-const showError = (input, errorMessage) => {
-  input.classList.add('popup__input_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('popup-error_visible');
-};
-
-const hideError = (input) => {
-  input.classList.remove('popup__input_type_error');
-  formError.classList.remove('popup-error_visible');
-  formError.textContent = '';
-};
-
-const checkInputValidity = () => {
-  if (!inputSelector.validity.valid) {
-    showError(inputSelector, inputSelector.validationMessage);
-  } else {
-    hideError(inputSelector);
-  }
-};
-
-formSelector.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-});
-
-inputSelector.addEventListener('input', function () {
-  checkInputValidity();
-});
-
-function enableValidation(form){
-  const inputs = Array.from(form.querySelectorAll('.popup__input'));
-  inputs.forEach() =>{
-  formSelector.addEventListener('submit', (evt) =>{
-    evt.preventDefault();
-  });
-  setEventListeners(formSelector);
-  }
+function activateError(element) {
+  element.classList.add('popup__input_type_error');
+  const errorMessage = element.nextElementSibling;
+  errorMessage.textContent = element.validationMessage;
 }
+function resetError(element) {
+  element.classList.remove('popup__input_type_error');
+  const errorMessage = element.nextElementSibling;
+  errorMessage.textContent = '';
+  
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.form'));
-  formList.forEach((formElement) => {
-  formElement.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  });
+}
+function enableValidation(form) {
+  const popupButton = form.querySelector('.popup__button');
+  form.addEventListener('input', () =>{
+      const inputs = Array.from(form.querySelectorAll('.popup__input'));
+      inputs.forEach((input) => {
+        if (input.checkValidity()) {
+         resetError(input)
+        } else{
+          activateError(input)
+        }
+      })
+      if (inputs.every(input =>{
+      return input.validity.valid})){
+          popupButton.removeAttribute('disabled');
+          popupButton.classList.remove('button_inactive');
+      }else{
+        popupButton.setAttribute('disabled', '');
+          popupButton.classList.add('button_inactive');
+      }
       
-  const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
-  
-  fieldsetList.forEach((fieldset) => {
-  setEventListeners(fieldset);
-  });
-  });
-  };
-  
-  const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-  return !inputElement.validity.valid;
-  });
-  };
-  */
-  
+  })
+}
+enableValidation(formEditProfile)
+enableValidation(formElementCreate)

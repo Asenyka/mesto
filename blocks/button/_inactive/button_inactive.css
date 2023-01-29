@@ -4,3 +4,7 @@ color: #000000;
 background-color: #E5E5E5;
 opacity: .2;
 }
+
+.button_inactive:hover {
+    opacity: .2;
+  }
