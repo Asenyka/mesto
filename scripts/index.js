@@ -15,6 +15,7 @@ const containerAddCard = document.querySelector('.popup__container_add-card');
 const containerImage = document.querySelector('.popup__picture-container');
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
 const buttonCreateCard = document.querySelector('.popup__button_create');
+const buttonSaveData = document.querySelector('popup__button_save');
 const cardsContainer = document.querySelector('.places__list');
 const popupPicture = document.querySelector('.popup__picture');
 const popupCaption = document.querySelector('.popup__caption');
@@ -58,9 +59,6 @@ function closePopup(popup) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  const popupButton=popup.querySelector('.popup__button');
-  popupButton.setAttribute('disabled','');
-  popupButton.classList.add('button_inactive');
   document.addEventListener('keydown',(evt)=> {
   if (evt.key === 'Escape') {
     closePopup(popup);
@@ -71,6 +69,11 @@ function openPopup(popup) {
   closePopup(popup);
  }
   })
+  if ((popup.contains(buttonCreateCard))||(popup.contains(buttonSaveData))){
+    const popupButton=popup.querySelector('.popup__button');
+    popupButton.setAttribute('disabled','');
+    popupButton.classList.add('button_inactive');
+  }
  }
 
 function showPofileInfo(){
