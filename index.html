@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" >
   </head>
 
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/header__logo.svg" alt="Логотип">
+      <img class="header__logo" src="./images/header__logo.svg" alt="Логотип" >
     </header>
     <main class="main">
       <section class="profile">
@@ -50,7 +50,12 @@
             alt="Кнопка закрытия"
           >
         </button>
-        <form class="popup__form popup__form_edit" method="get" name="formEdit" novalidate>
+        <form
+          class="popup__form popup__form_edit"
+          method="get"
+          name="formEdit"
+          novalidate
+        >
           <h2 class="popup__heading">Редактировать профиль</h2>
           <input
             class="popup__input popup__input_box_name"
@@ -63,7 +68,7 @@
             maxlength="40"
           >
           <span class="popup__error popup__error_name"></span>
-         <input
+          <input
             class="popup__input popup__input_box_job"
             id="job"
             type="text"
@@ -74,11 +79,16 @@
             maxlength="200"
           >
           <span class="popup__error popup__error_job"></span>
-          <button class="popup__button popup__button_save button button_inactive" type="submit">Сохранить</button>
+          <button
+            class="popup__button popup__button_save button button_inactive"
+            type="submit"
+          >
+            Сохранить
+          </button>
         </form>
       </div>
-      </section>
-      <section class="popup popup_add-card">
+    </section>
+    <section class="popup popup_add-card">
       <div class="popup__container">
         <button class="popup__close-button button" type="button">
           <img
@@ -87,7 +97,12 @@
             alt="Кнопка закрытия"
           >
         </button>
-        <form class="popup__form popup__form_create" method="get" name="formCreate" novalidate>
+        <form
+          class="popup__form popup__form_create"
+          method="get"
+          name="formCreate"
+          novalidate
+        >
           <h2 class="popup__heading">Новое место</h2>
           <input
             class="popup__input popup__input_box_title"
@@ -117,8 +132,8 @@
           </button>
         </form>
       </div>
-      </section> 
-      <section class="popup popup_image">
+    </section>
+    <section class="popup popup_image">
       <div class="popup__picture-container">
         <button class="popup__close-button button" type="button">
           <img
