@@ -54,6 +54,7 @@
           <h2 class="popup__heading">Редактировать профиль</h2>
           <input
             class="popup__input popup__input_box_name"
+            id="name"
             type="text"
             name="name"
             placeholder="Имя"
@@ -61,9 +62,10 @@
             minlength="2"
             maxlength="40"
           >
-          <span class="popup__error"></span>
-          <input
+          <span class="popup__error popup__error_name"></span>
+         <input
             class="popup__input popup__input_box_job"
+            id="job"
             type="text"
             name="job"
             placeholder="Вид деятельности"
@@ -71,8 +73,8 @@
             minlength="2"
             maxlength="200"
           >
-          <span class="popup__error"></span>
-          <button class="popup__button popup__button_save button button_inactive" type="submit" disabled>Сохранить</button>
+          <span class="popup__error popup__error_job"></span>
+          <button class="popup__button popup__button_save button button_inactive" type="submit">Сохранить</button>
         </form>
       </div>
       </section>
@@ -89,6 +91,7 @@
           <h2 class="popup__heading">Новое место</h2>
           <input
             class="popup__input popup__input_box_title"
+            id="title"
             type="text"
             name="title"
             placeholder="Название"
@@ -96,25 +99,25 @@
             minlength="2"
             maxlength="30"
           >
-          <span class="popup__error"></span>
+          <span class="popup__error popup__error_title"></span>
           <input
             class="popup__input popup__input_box_link"
+            id="link"
             type="url"
             name="link"
             placeholder="Ссылка на картинку"
             required
           >
-          <span class="popup__error"></span>
+          <span class="popup__error popup__error_link"></span>
           <button
             class="popup__button popup__button_create button button_inactive"
             type="submit"
-            disabled
           >
             Создать
           </button>
         </form>
       </div>
-      </section>
+      </section> 
       <section class="popup popup_image">
       <div class="popup__picture-container">
         <button class="popup__close-button button" type="button">

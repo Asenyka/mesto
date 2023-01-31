@@ -19,7 +19,8 @@ const buttonSaveData = document.querySelector('popup__button_save');
 const cardsContainer = document.querySelector('.places__list');
 const popupPicture = document.querySelector('.popup__picture');
 const popupCaption = document.querySelector('.popup__caption');
-const buttonClose = document.querySelectorAll('.popup__close-button');
+const popups = document.querySelectorAll('.popup')
+
 
 
 
@@ -64,16 +65,6 @@ function openPopup(popup) {
     closePopup(popup);
     }
   });
-  popup.addEventListener('click', (evt)=>{
- if (evt.target.classList.contains('popup')){
-  closePopup(popup);
- }
-  })
-  if ((popup.contains(buttonCreateCard))||(popup.contains(buttonSaveData))){
-    const popupButton=popup.querySelector('.popup__button');
-    popupButton.setAttribute('disabled','');
-    popupButton.classList.add('button_inactive');
-  }
  }
 
 function showPofileInfo(){
@@ -138,14 +129,20 @@ function submitCard(evt) {
   closePopup(popupAddCard);
 }
 
+popups.forEach((popup) => {
+  const popupCloseButton = popup.querySelector('.popup__close-button');
+  const popupCloseButtonImg = popup.querySelector('.popup__close-button-img')
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened') || evt.target === popupCloseButton || evt.target === popupCloseButtonImg){
+          closePopup(popup)
+      }
+  })
+}) 
 
 
 renderCards(initialCards);
 
-buttonClose.forEach((buttonClose) =>
-buttonClose.addEventListener('click', () => {
-  closePopup(buttonClose.closest('.popup'));})
-);
+
 
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   openPopup(popupEditProfile);
@@ -155,6 +152,7 @@ buttonOpenEditProfilePopup.addEventListener('click', () => {
 buttonOpenAddCardPopup.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
+
 
 
 formEditProfile.addEventListener('submit', submitEditProfileForm, closePopup(popupEditProfile));
