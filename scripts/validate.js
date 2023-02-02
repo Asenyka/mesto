@@ -6,9 +6,9 @@ const settings = {
   inactiveButtonClass: 'button_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: '.popup__error',
-}
+};
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(
     `${settings.errorClass}_${inputElement.id}`
   );
@@ -17,7 +17,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 };
 
 // Функция, которая удаляет класс с ошибкой
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(
     `${settings.errorClass}_${inputElement.id}`
   );
@@ -26,28 +26,33 @@ const hideInputError = (formElement, inputElement) => {
 };
 
 // Функция, которая проверяет валидность поля
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, settings) => {
   if (!inputElement.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      settings
+    );
   } else {
     // Если проходит, скроем
     hideInputError(formElement, inputElement, settings);
   }
 };
 //Функция, которая проверяет наличие невалидного поля в списке полей
-const hasInvalidInput = (inputsList) => {
+const hasInvalidInput = (inputsList, settings) => {
   return inputsList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
 
-function disableButton(buttonToDisable) {
+function disableButton(buttonToDisable, settings) {
   buttonToDisable.classList.add(settings.inactiveButtonClass);
   buttonToDisable.setAttribute('disabled', '');
 }
 //Функция переключения состояния кнопки
-const toggleButtonState = (inputsList, buttonElement) => {
+const toggleButtonState = (inputsList, buttonElement, settings) => {
   if (hasInvalidInput(inputsList, settings)) {
     disableButton(buttonElement, settings);
   } else {
@@ -56,7 +61,7 @@ const toggleButtonState = (inputsList, buttonElement) => {
   }
 };
 // Функция слушателя при каждом вводе в поле и сабмите формы
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, settings) => {
   const formsList = Array.from(
     document.querySelectorAll(settings.formSelector)
   );
@@ -68,26 +73,25 @@ const setEventListeners = (formElement) => {
   );
   inputsList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputsList, buttonElement), settings;
+      checkInputValidity(formElement, inputElement, settings);
+      toggleButtonState(inputsList, buttonElement, settings);
     });
   });
-  formsList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      disableButton(buttonElement, settings);
-    });
+  formElement.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    disableButton(buttonElement, settings);
   });
 };
 
 //Функция валидации
-const enableValidation = () => {
+const enableValidation = (settings) => {
   const formsList = Array.from(
     document.querySelectorAll(settings.formSelector)
   );
   formsList.forEach((formElement) => {
-    setEventListeners(formElement,settings);
+    setEventListeners(formElement, settings);
   });
 };
 
 enableValidation(settings);
+
