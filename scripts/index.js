@@ -80,6 +80,7 @@ function submitEditProfileForm(evt) {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   closePopup(popupEditProfile);
+  formEditProfile.reset();
 }
 
 function createCard(newCard) {

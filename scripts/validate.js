@@ -46,15 +46,11 @@ const hasInvalidInput = (inputsList, settings) => {
     return !inputElement.validity.valid;
   });
 };
-
-function disableButton(buttonToDisable, settings) {
-  buttonToDisable.classList.add(settings.inactiveButtonClass);
-  buttonToDisable.setAttribute('disabled', '');
-}
 //Функция переключения состояния кнопки
 const toggleButtonState = (inputsList, buttonElement, settings) => {
   if (hasInvalidInput(inputsList, settings)) {
-    disableButton(buttonElement, settings);
+    buttonElement.classList.add(settings.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', '');
   } else {
     buttonElement.classList.remove(settings.inactiveButtonClass);
     buttonElement.removeAttribute('disabled');
@@ -62,9 +58,6 @@ const toggleButtonState = (inputsList, buttonElement, settings) => {
 };
 // Функция слушателя при каждом вводе в поле и сабмите формы
 const setEventListeners = (formElement, settings) => {
-  const formsList = Array.from(
-    document.querySelectorAll(settings.formSelector)
-  );
   const inputsList = Array.from(
     formElement.querySelectorAll(settings.inputSelector)
   );
@@ -79,7 +72,11 @@ const setEventListeners = (formElement, settings) => {
   });
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    disableButton(buttonElement, settings);
+  });
+  formElement.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(inputsList, buttonElement, settings);
+    }, 0);
   });
 };
 
@@ -94,4 +91,3 @@ const enableValidation = (settings) => {
 };
 
 enableValidation(settings);
-

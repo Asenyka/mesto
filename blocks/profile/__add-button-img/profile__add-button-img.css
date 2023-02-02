@@ -3,7 +3,6 @@
   object-fit: contain;
 }
 
-
 @media screen and (min-width: 1024px) {
   .profile__add-button-img {
     width: 22px;

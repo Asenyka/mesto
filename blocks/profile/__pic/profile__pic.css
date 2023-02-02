@@ -1,10 +1,9 @@
 .profile__pic {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    border-radius: 50%;
-    justify-self: center;
-    margin-left: 5.75px;
-    display: block;
-  }
-
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 50%;
+  justify-self: center;
+  margin-left: 5.75px;
+  display: block;
+}

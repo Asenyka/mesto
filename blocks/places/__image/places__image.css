@@ -1,7 +1,6 @@
 .places__image {
-    width: 282px;
-    height: 282px;
-    object-fit: cover;
-    background-repeat: no-repeat;
-  }
-
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
