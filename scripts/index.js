@@ -1,3 +1,6 @@
+import Card from "./card.js";
+import initialCards from "./initial-cards.js";
+
 const buttonOpenEditProfilePopup = document.querySelector(
   '.profile__edit-button'
 );
@@ -23,35 +26,7 @@ const popupPicture = document.querySelector('.popup__picture');
 const popupCaption = document.querySelector('.popup__caption');
 const popups = document.querySelectorAll('.popup');
 
-const cardTemplate = document
-  .querySelector('.places__template')
-  .content.querySelector('.places__item');
-const initialCards = [
-  {
-    name: 'Бермамыт',
-    link: './images/bermamyt.jpg',
-  },
-  {
-    name: 'Дивногорск',
-    link: './images/divnogorsk.jpg',
-  },
-  {
-    name: 'Эльтон',
-    link: './images/elton.jpg',
-  },
-  {
-    name: 'Хибины',
-    link: './images/khibiny.jpg',
-  },
-  {
-    name: 'Рускеала',
-    link: './images/ruskeala.jpg',
-  },
-  {
-    name: 'Усьвинские столбы',
-    link: './images/usyvinskie-stolby.jpg',
-  },
-];
+
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -83,7 +58,7 @@ function submitEditProfileForm(evt) {
   formEditProfile.reset();
 }
 
-function createCard(newCard) {
+/*function createCard(newCard) {
   const card = cardTemplate.cloneNode(true);
   const cardText = card.querySelector('.places__title');
   const cardImg = card.querySelector('.places__image');
@@ -107,6 +82,7 @@ function createCard(newCard) {
 
   return card;
 }
+*/
 
 function addCard(card) {
   cardsContainer.prepend(card);
@@ -114,19 +90,22 @@ function addCard(card) {
 
 function renderCards(cards) {
   cards.forEach((item) => {
-    const cardHtml = createCard(item);
-    addCard(cardHtml);
+    const card = new Card('.places__template', item);
+    const newCard = card.createCard();
+    
+    addCard(newCard);
   });
 }
 
 function submitCard(evt) {
   evt.preventDefault();
-  const cardData = {
+  const item = {
     name: titleInput.value,
     link: linkInput.value,
   };
-  const cardHtml = createCard(cardData);
-  addCard(cardHtml);
+  const card = new Card ('.places__template', item);
+  const newCard = card.createCard();
+  addCard(newCard);
   formElementCreate.reset();
   closePopup(popupAddCard);
 }
