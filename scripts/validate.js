@@ -1,3 +1,7 @@
+class FormValidator{
+  constructor(settings, )
+}
+
 //Переменная с параметрами для функций
 const settings = {
   formSelector: '.popup__form',
