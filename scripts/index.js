@@ -1,5 +1,6 @@
-import Card from "./card.js";
-import initialCards from "./initial-cards.js";
+import Card from './Card.js';
+import initialCards from './initial-cards.js';
+import FormValidator from './FormValidator.js';
 
 const buttonOpenEditProfilePopup = document.querySelector(
   '.profile__edit-button'
@@ -17,6 +18,14 @@ const formElementCreate = document.querySelector('.popup__form_create');
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.places__list');
 const popups = document.querySelectorAll('.popup');
+const validationSettings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: '.popup__error',
+};
 
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -66,7 +75,7 @@ function submitCard(evt) {
     name: titleInput.value,
     link: linkInput.value,
   };
-  const card = new Card ('.places__template', item);
+  const card = new Card('.places__template', item);
   const newCard = card.createCard();
   addCard(newCard);
   formElementCreate.reset();
@@ -100,4 +109,16 @@ formEditProfile.addEventListener('submit', submitEditProfileForm);
 
 formElementCreate.addEventListener('submit', submitCard);
 
-export default openPopup
+const editProfileFormValidator = new FormValidator(
+  validationSettings,
+  formEditProfile
+);
+editProfileFormValidator.enableValidation();
+
+const createFormValidator = new FormValidator(
+  validationSettings,
+  formElementCreate
+);
+createFormValidator.enableValidation();
+
+export default openPopup;
