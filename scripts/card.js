@@ -1,5 +1,4 @@
 import openPopup from './index.js';
-
 class Card {
   constructor(template, item) {
     this._template = template;
@@ -7,7 +6,6 @@ class Card {
     this._link = item.link;
     this._element = this._getTemplate();
   }
-
   _getTemplate() {
     return document
       .querySelector(this._template)
@@ -22,7 +20,6 @@ class Card {
       .querySelector('.places__heart')
       .classList.toggle('places__heart_active');
   }
-
   _openPopupImage() {
     const popupPicture = document.querySelector('.popup__picture');
     const popupCaption = document.querySelector('.popup__caption');
@@ -32,7 +29,6 @@ class Card {
     popupPicture.alt = `${this._name} - изображение в оригинальном размере`;
     popupCaption.textContent = this._name;
   }
-
   _addEventListeners() {
     this._element
       .querySelector('.places__bin')
