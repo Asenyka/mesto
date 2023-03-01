@@ -7,6 +7,12 @@ class FormValidator {
     this._inputErrorClass = settings.inputErrorClass;
     this._errorClass = settings.errorClass;
     this._formElement = formElement;
+    this._inputsList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
+    this._buttonElement = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   // Функция, которая добавляет класс с ошибкой
@@ -38,33 +44,27 @@ class FormValidator {
     }
   }
   //Функция, которая проверяет наличие невалидного поля в списке полей
-  _hasInvalidInput(inputsList) {
-    return inputsList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputsList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
   //Функция переключения состояния кнопки
-  _toggleButtonState(inputsList, buttonElement) {
-    if (this._hasInvalidInput(inputsList)) {
-      buttonElement.classList.add(this._inactiveButtonClass);
-      buttonElement.setAttribute('disabled', '');
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.setAttribute('disabled', '');
     } else {
-      buttonElement.classList.remove(this._inactiveButtonClass);
-      buttonElement.removeAttribute('disabled');
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.removeAttribute('disabled');
     }
   }
   // Функция слушателя при каждом вводе в поле и сабмите формы
   _setEventListeners() {
-    const inputsList = Array.from(
-      this._formElement.querySelectorAll(this._inputSelector)
-    );
-    const buttonElement = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
-    inputsList.forEach((inputElement) => {
+    this._inputsList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputsList, buttonElement);
+        this._toggleButtonState();
       });
     });
     this._formElement.addEventListener('submit', (evt) => {
@@ -72,7 +72,7 @@ class FormValidator {
     });
     this._formElement.addEventListener('reset', () => {
       setTimeout(() => {
-        this._toggleButtonState(inputsList, buttonElement);
+        this._toggleButtonState();
       }, 0);
     });
   }

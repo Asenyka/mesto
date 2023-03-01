@@ -1,6 +1,7 @@
 import Card from './Card.js';
 import initialCards from './initial-cards.js';
 import FormValidator from './FormValidator.js';
+import { openPopup, closePopup } from './utils.js';
 
 const buttonOpenEditProfilePopup = document.querySelector(
   '.profile__edit-button'
@@ -27,23 +28,6 @@ const validationSettings = {
   errorClass: '.popup__error',
 };
 
-function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape);
-}
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
-}
-
 function showPofileInfo() {
   nameInput.value = profileName.innerHTML;
   jobInput.value = profileJob.innerHTML;
@@ -60,11 +44,14 @@ function submitEditProfileForm(evt) {
 function addCard(card) {
   cardsContainer.prepend(card);
 }
-
+function createCard(template, item) {
+  const card = new Card(template, item);
+  const newCard = card.createCard();
+  return newCard;
+}
 function renderCards(cards) {
   cards.forEach((item) => {
-    const card = new Card('.places__template', item);
-    const newCard = card.createCard();
+    const newCard = createCard('.places__template', item);
     addCard(newCard);
   });
 }
@@ -75,14 +62,16 @@ function submitCard(evt) {
     name: titleInput.value,
     link: linkInput.value,
   };
-  const card = new Card('.places__template', item);
-  const newCard = card.createCard();
+  const newCard = createCard('.places__template', item);
   addCard(newCard);
   formElementCreate.reset();
   closePopup(popupAddCard);
 }
 
 popups.forEach((popup) => {
+  //Видимо, возникло недопонимание: здесь не идет речь отдельно о попапе с изображением, popupCloseButtonImg - это изображение крестика, размещенное на кнопке закрытия любого из попапов.
+  // Если удалить evt.target === popupCloseButtonImg попап (любой) перестанет закрываться при нажатии на крестик.
+
   const popupCloseButtonImg = popup.querySelector('.popup__close-button-img');
   popup.addEventListener('mousedown', (evt) => {
     if (
@@ -102,6 +91,7 @@ buttonOpenEditProfilePopup.addEventListener('click', () => {
 });
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
+  formElementCreate.reset();
   openPopup(popupAddCard);
 });
 
@@ -120,5 +110,3 @@ const createFormValidator = new FormValidator(
   formElementCreate
 );
 createFormValidator.enableValidation();
-
-export default openPopup;
