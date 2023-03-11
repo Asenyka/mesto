@@ -1,12 +1,14 @@
-import Card from './Card.js';
-import initialCards from './initial-cards.js';
-import FormValidator from './FormValidator.js';
-import { openPopup, closePopup } from './utils.js';
+import Card from '../components/Card.js';
+import initialCards from '../components/initial-cards.js';
+import FormValidator from '../utils/FormValidator.js';
+import {PopupWithForm} from '../components/Popup.js';
+import {PopupWithImage} from '../components/Popup.js';
+import Section from '../components/Section.js';
 
 const buttonOpenEditProfilePopup = document.querySelector(
   '.profile__edit-button'
 );
-const popupEditProfile = document.querySelector('.popup_edit-profile');
+/*const popupEditProfile = document.querySelector('.popup_edit-profile');*/
 const popupAddCard = document.querySelector('.popup_add-card');
 const nameInput = document.querySelector('.popup__input_box_name');
 const jobInput = document.querySelector('.popup__input_box_job');
@@ -17,8 +19,8 @@ const profileJob = document.querySelector('.profile__job');
 const formEditProfile = document.querySelector('.popup__form_edit');
 const formElementCreate = document.querySelector('.popup__form_create');
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-button');
-const cardsContainer = document.querySelector('.places__list');
-const popups = document.querySelectorAll('.popup');
+/*const cardsContainer = document.querySelector('.places__list');
+const popups = document.querySelectorAll('.popup');*/
 const validationSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -33,45 +35,69 @@ function showPofileInfo() {
   jobInput.value = profileJob.innerHTML;
 }
 
-function submitEditProfileForm(evt) {
+/*function submitEditProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup(popupEditProfile);
+  const popupToClose = new Popup('.popup_edit-profile');
+  popupToClose.close();
   formEditProfile.reset();
-}
+}*/
 
-function addCard(card) {
+/*function addCard(card) {
   cardsContainer.prepend(card);
-}
+}*/
+
 function createCard(template, item) {
-  const card = new Card(template, item);
+  const card = new Card(template, item, 
+    {handleCardClick:()=>{
+        const popupWithImage = new PopupWithImage('.popup_image', card._link, card._name);
+        popupWithImage.open();
+    }
+    }
+    );
   const newCard = card.createCard();
   return newCard;
 }
-function renderCards(cards) {
+ 
+
+/*function renderCards(cards) {
   cards.forEach((item) => {
     const newCard = createCard('.places__template', item);
     addCard(newCard);
   });
-}
+}*/
 
-function submitCard(evt) {
+const cardList = new Section ({
+  items: initialCards,
+  renderer: (item) => {
+const card = createCard('.places__template', item);
+cardList.addItem(card);
+  }
+},
+'.places__list');
+
+cardList.renderer();
+
+/*function submitCard(evt) {
   evt.preventDefault();
-  const item = {
+  const data = [{
     name: titleInput.value,
     link: linkInput.value,
-  };
-  const newCard = createCard('.places__template', item);
-  addCard(newCard);
+  }];
+  const newCard = new Section ({
+   items: data, 
+   renderer: (item) => {
+    const card = createCard('.places__template', item);
+  newCard.addItem(card);}}, '.places__list');
+  newCard.renderer();
   formElementCreate.reset();
-  closePopup(popupAddCard);
+  const popupToClose = new Popup('.popup_add-card');
+  popupToClose.close();
 }
+*/
 
-popups.forEach((popup) => {
-  //Видимо, возникло недопонимание: здесь не идет речь отдельно о попапе с изображением, popupCloseButtonImg - это изображение крестика, размещенное на кнопке закрытия любого из попапов.
-  // Если удалить evt.target === popupCloseButtonImg попап (любой) перестанет закрываться при нажатии на крестик.
-
+/*popups.forEach((popup) => {
   const popupCloseButtonImg = popup.querySelector('.popup__close-button-img');
   popup.addEventListener('mousedown', (evt) => {
     if (
@@ -83,21 +109,39 @@ popups.forEach((popup) => {
   });
 });
 
-renderCards(initialCards);
+renderCards(initialCards);*/
 
 buttonOpenEditProfilePopup.addEventListener('click', () => {
-  openPopup(popupEditProfile);
+  const popupToEditProfile = new PopupWithForm('.popup_edit-profile', {
+    submitForm: () =>{
+      profileName.textContent = nameInput.value;
+      profileJob.textContent = jobInput.value;
+      popupToEditProfile.close();
+    }
+  });
+  popupToEditProfile.open();
   showPofileInfo();
 });
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
-  formElementCreate.reset();
-  openPopup(popupAddCard);
+  /*formElementCreate.reset();*/
+  const popupToAddCard = new PopupWithForm('.popup_add-card', {
+    submitForm: (data) =>{
+       const newCard = new Section ({
+       items: data, 
+       renderer: (item) => {
+        const card = createCard('.places__template', item);
+      newCard.addItem(card);}}, '.places__list');
+      newCard.renderer();
+      popupToAddCard.close();
+    }
+    });
+  popupToAddCard.open();
 });
 
-formEditProfile.addEventListener('submit', submitEditProfileForm);
+/*formEditProfile.addEventListener('submit', submitEditProfileForm);*/
 
-formElementCreate.addEventListener('submit', submitCard);
+/*formElementCreate.addEventListener('submit', submitCard);*/
 
 const editProfileFormValidator = new FormValidator(
   validationSettings,

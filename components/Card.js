@@ -1,16 +1,14 @@
-import { openPopup } from './utils.js';
-//эти переменные используются в коде только один раз и нужны только для передачи данных в попап с изображением
-const popupPicture = document.querySelector('.popup__picture');
-const popupCaption = document.querySelector('.popup__caption');
-const popupImage = document.querySelector('.popup_image');
+/*import { openPopup } from '../utils/utils.js';*/
+import PopupWithImage from "./Popup.js";
 
 class Card {
-  constructor(template, item) {
+  constructor(template, item, {handleCardClick}) {
     this._template = template;
     this._name = item.name;
     this._link = item.link;
     this._element = this._getTemplate();
     this._image = this._element.querySelector('.places__image');
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
     return document
@@ -26,12 +24,7 @@ class Card {
       .querySelector('.places__heart')
       .classList.toggle('places__heart_active');
   }
-  _openPopupImage() {
-    openPopup(popupImage);
-    popupPicture.src = this._link;
-    popupPicture.alt = `${this._name} - изображение в оригинальном размере`;
-    popupCaption.textContent = this._name;
-  }
+ 
   _addEventListeners() {
     this._element
       .querySelector('.places__bin')
@@ -44,9 +37,8 @@ class Card {
         this._toggleLike();
       });
     this._element
-      .querySelector('.places__image')
       .addEventListener('click', () => {
-        this._openPopupImage();
+        this._handleCardClick();
       });
   }
 
