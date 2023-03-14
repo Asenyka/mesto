@@ -1,6 +1,3 @@
-/*import { openPopup } from '../utils/utils.js';*/
-import PopupWithImage from "./Popup.js";
-
 class Card {
   constructor(template, item, {handleCardClick}) {
     this._template = template;
@@ -36,7 +33,7 @@ class Card {
       .addEventListener('click', () => {
         this._toggleLike();
       });
-    this._element
+    this._image
       .addEventListener('click', () => {
         this._handleCardClick();
       });
