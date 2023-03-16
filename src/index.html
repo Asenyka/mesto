@@ -2,20 +2,19 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/header__logo.svg" alt="Логотип" />
+      <img class="header__logo" src="<%=require('./images/header__logo.svg')%>" alt="Логотип" />
     </header>
     <main class="main">
       <section class="profile">
         <img
           class="profile__pic"
-          src="./images/profile__pic.png"
+          src="<%=require('./images/profile__pic.png')%>"
           alt="Фото профиля"
         />
         <div class="profile__info">
@@ -23,7 +22,7 @@
           <button class="profile__edit-button button" type="button">
             <img
               class="profile__edit-button-img"
-              src="./images/edit-button.svg"
+              src="<%=require('./images/edit-button.svg')%>"
               alt="Иконка кнопки"
             />
           </button>
@@ -32,7 +31,7 @@
         <button class="profile__add-button button" type="button">
           <img
             class="profile__add-button-img"
-            src="./images/add-button.svg"
+            src="<%=require('./images/add-button.svg')%>"
             alt="Иконка кнопки"
           />
         </button>
@@ -46,7 +45,7 @@
         <button class="popup__close-button button" type="button">
           <img
             class="popup__close-button-img"
-            src="./images/close-button.svg"
+            src="<%=require('./images/close-button.svg')%>"
             alt="Кнопка закрытия"
           />
         </button>
@@ -94,7 +93,7 @@
         <button class="popup__close-button button" type="button">
           <img
             class="popup__close-button-img"
-            src="./images/close-button.svg"
+            src="<%=require('./images/close-button.svg')%>"
             alt="Кнопка закрытия"
           />
         </button>
@@ -140,7 +139,7 @@
         <button class="popup__close-button button" type="button">
           <img
             class="popup__close-button-img"
-            src="./images/close-button.svg"
+            src="<%=require('./images/close-button.svg')%>"
             alt="Кнопка закрытия"
           />
         </button>
@@ -163,18 +162,9 @@
           <button class="places__heart button" type="button"></button>
         </div>
         <button class="places__bin button">
-          <img src="./images/bin.svg" />
+          <img src="<%=require('./images/bin.svg')%>" />
         </button>
       </li>
     </template>
-    <script src="./pages/index.js" type="module"></script>
-    <script src="./components/Card.js" type="module"></script>
-    <script src="./components/initial-cards.js" type="module"></script>
-    <script src="./components/Section.js" type="module"></script>
-    <script src="./components/FormValidator.js" type="module"></script>
-    <script src="./components/Popup.js" type="module"></script>
-    <script src="./components/UserInfo.js" type="module"></script>
-    <script src="./components/PopupWithImage.js" type="module"></script>
-    
   </body>
 </html>
