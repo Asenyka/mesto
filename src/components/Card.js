@@ -6,6 +6,9 @@ class Card {
     this._element = this._getTemplate();
     this._image = this._element.querySelector('.places__image');
     this._handleCardClick = handleCardClick;
+    this._likeButton = this._element.querySelector('.places__heart');
+    this._cardName = this._element.querySelector('.places__title');
+    this._bin = this._element.querySelector('.places__bin');
   }
   _getTemplate() {
     return document
@@ -17,19 +20,16 @@ class Card {
     this._element.remove();
   }
   _toggleLike() {
-    this._element
-      .querySelector('.places__heart')
+    this._likeButton
       .classList.toggle('places__heart_active');
   }
  
   _addEventListeners() {
-    this._element
-      .querySelector('.places__bin')
-      .addEventListener('click', () => {
+    
+      this._bin.addEventListener('click', () => {
         this._removeCard();
       });
-    this._element
-      .querySelector('.places__heart')
+    this._likeButton
       .addEventListener('click', () => {
         this._toggleLike();
       });
@@ -40,7 +40,7 @@ class Card {
   }
 
   createCard() {
-    this._element.querySelector('.places__title').textContent = this._name;
+    this._cardName.textContent = this._name;
     this._image.src = this._link;
     this._image.alt = this._name;
     this._addEventListeners();
