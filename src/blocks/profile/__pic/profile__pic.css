@@ -6,4 +6,12 @@
   justify-self: center;
   margin-left: 5.75px;
   display: block;
+  cursor: pointer;
+  transition: 0.2s;
+  position: relative;
+}
+
+.profile__pic:hover {
+  opacity: 0.2;
+
 }

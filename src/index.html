@@ -40,6 +40,58 @@
         <ul class="places__list"></ul>
       </section>
     </main>
+    <section class="popup popup_confirm-deletion">
+      <div class="popup__container">
+        <button class="popup__close-button button" type="button">
+          <img
+            class="popup__close-button-img"
+            src="<%=require('./images/close-button.svg')%>"
+            alt="Кнопка закрытия"
+          />
+        </button>
+        <h2 class="popup__heading">Вы уверены?</h2>
+        <button
+            class="popup__button popup__button_confirm button"
+            type="button"
+          >
+            Да
+          </button>
+    </section>
+    <section class="popup popup_udate-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button button" type="button">
+          <img
+            class="popup__close-button-img"
+            src="<%=require('./images/close-button.svg')%>"
+            alt="Кнопка закрытия"
+          />
+        </button>
+        <form
+          class="popup__form popup__form_update"
+          method="get"
+          name="formUpdate"
+          novalidate
+        >
+          <h2 class="popup__heading">Обновить аватар</h2>
+          <input
+            class="popup__input popup__input_box_link"
+            id="link"
+            type="url"
+            name="link"
+            placeholder="Ссылка на аватар"
+            required
+          />
+          <span class="popup__error popup__error_link"></span>
+          <button
+            class="popup__button popup__button_create button button_inactive"
+            type="submit"
+            disabled=""
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
     <section class="popup popup_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button button" type="button">
@@ -71,7 +123,7 @@
             class="popup__input popup__input_box_job"
             id="job"
             type="text"
-            name="job"
+            name="about"
             placeholder="Вид деятельности"
             required
             minlength="2"
