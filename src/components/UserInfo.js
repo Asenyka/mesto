@@ -3,6 +3,7 @@ export default class UserInfo {
     this._profileName = profileName;
     this._profileJob = profileJob;
     this._profileAvatar = profileAvatar;
+    this._id = 0;
   }
   getUserInfo() {
     return {
@@ -10,9 +11,11 @@ export default class UserInfo {
       about: this._profileJob.textContent,
     };
   }
-  setUserInfo({ name, about, avatar}) {
+  setUserInfo({ name, about, avatar, _id}) {
     this._profileName.textContent = name;
     this._profileJob.textContent = about;
     this._profileAvatar.src = avatar;
+    this._id = _id;
   }
+  
 }

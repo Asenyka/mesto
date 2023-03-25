@@ -7,6 +7,6 @@ constructor(popupSelector, {handleRequest}){
 }
 setEventListeners(){
     super.setEventListeners();
-    this._button.addEventListener('click', (this._handleRequest));
-  }
+    this._button.addEventListener('click', this._handleRequest);
+}
 }

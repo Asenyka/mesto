@@ -12,11 +12,18 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img
+        <div class = "profile__img-container">
+          <img
           class="profile__pic"
           src="<%=require('./images/profile__pic.png')%>"
           alt="Фото профиля"
         />
+        <div class="profile__overlay">
+        <img class="profile__update-icon"
+        src="<%=require('./images/change-avatar.svg')%>"
+        alt = "Иконка редактирования профиля">
+      </div>
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button button" type="button">
@@ -211,7 +218,10 @@
         <img class="places__image" />
         <div class="places__title-heart">
           <h2 class="places__title"></h2>
+          <div class="places__like">
           <button class="places__heart button" type="button"></button>
+          <p class="places__like-counter">25</p>
+          </div>
         </div>
         <button class="places__bin button">
           <img src="<%=require('./images/bin.svg')%>" />

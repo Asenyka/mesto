@@ -31,6 +31,14 @@ export default class PopupWithForm extends Popup {
     });
   }
  
+  showSavingInProcess(isLoading){
+        if(isLoading){
+        this._submitButton.innerHTML = 'Сохранение...';
+      }
+      else{
+        this._submitButton.innerHTML = 'Сохранить';
+    }}
+
   
   close() {
     super.close();

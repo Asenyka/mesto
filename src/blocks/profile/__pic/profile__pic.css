@@ -1,17 +1,10 @@
 .profile__pic {
   width: 120px;
   height: 120px;
-  object-fit: contain;
-  border-radius: 50%;
+  object-fit: cover;
   justify-self: center;
-  margin-left: 5.75px;
   display: block;
   cursor: pointer;
   transition: 0.2s;
   position: relative;
-}
-
-.profile__pic:hover {
-  opacity: 0.2;
-
 }
