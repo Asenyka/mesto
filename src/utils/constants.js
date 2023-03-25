@@ -1,43 +1,43 @@
-import bermamyt from '../images/bermamyt.jpg'
-import divnogorsk from '../images/divnogorsk.jpg'
-import elton from '../images/elton.jpg'
-import khibiny from '../images/khibiny.jpg'
-import ruskeala from '../images/ruskeala.jpg'
-import usyvinskieStolby from '../images/usyvinskie-stolby.jpg'
+import bermamyt from "../images/bermamyt.jpg";
+import divnogorsk from "../images/divnogorsk.jpg";
+import elton from "../images/elton.jpg";
+import khibiny from "../images/khibiny.jpg";
+import ruskeala from "../images/ruskeala.jpg";
+import usyvinskieStolby from "../images/usyvinskie-stolby.jpg";
 const initialCards = [
   {
-    name: 'Бермамыт',
+    name: "Бермамыт",
     link: bermamyt,
   },
   {
-    name: 'Дивногорск',
+    name: "Дивногорск",
     link: divnogorsk,
   },
   {
-    name: 'Эльтон',
+    name: "Эльтон",
     link: elton,
   },
   {
-    name: 'Хибины',
+    name: "Хибины",
     link: khibiny,
   },
   {
-    name: 'Рускеала',
+    name: "Рускеала",
     link: ruskeala,
   },
   {
-    name: 'Усьвинские столбы',
+    name: "Усьвинские столбы",
     link: usyvinskieStolby,
   },
 ];
 
 const validationSettings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: '.popup__error',
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "button_inactive",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: ".popup__error",
 };
-export {initialCards}
-export {validationSettings}
+export { initialCards };
+export { validationSettings };
