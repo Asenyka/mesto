@@ -10,4 +10,4 @@
 Для реализации проекта использованы технологии HTML, CSS и JS.
 
 Ссылка на проект на GitHub:
-https://asenyka.github.io/mesto/
+https://Asenyka.github.io/mesto 
