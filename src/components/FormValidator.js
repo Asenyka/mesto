@@ -29,7 +29,7 @@ class FormValidator {
     const errorElement = this._formElement.querySelector(
       `${this._errorClass}_${inputElement.id}`
     );
-    errorElement.textContent = '';
+    errorElement.textContent = "";
     inputElement.classList.remove(this._inputErrorClass);
   }
 
@@ -53,24 +53,24 @@ class FormValidator {
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._inactiveButtonClass);
-      this._buttonElement.setAttribute('disabled', '');
+      this._buttonElement.setAttribute("disabled", "");
     } else {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
-      this._buttonElement.removeAttribute('disabled');
+      this._buttonElement.removeAttribute("disabled");
     }
   }
   // Функция слушателя при каждом вводе в поле и сабмите формы
   _setEventListeners() {
     this._inputsList.forEach((inputElement) => {
-      inputElement.addEventListener('input', () => {
+      inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState();
       });
     });
-    this._formElement.addEventListener('submit', (evt) => {
+    this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    this._formElement.addEventListener('reset', () => {
+    this._formElement.addEventListener("reset", () => {
       setTimeout(() => {
         this._toggleButtonState();
       }, 0);

@@ -7,6 +7,13 @@ export default class PopupToConfirm extends Popup {
   }
   setEventListeners() {
     super.setEventListeners();
-    this._button.addEventListener("click", this._handleRequest);
+    this._button.addEventListener("click", () => {
+      this._handleRequest(this._cardID, this._card);
+    });
+  }
+  open(card) {
+    super.open();
+    this._cardID = card._cardId;
+    this._card = card;
   }
 }

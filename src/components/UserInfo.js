@@ -17,4 +17,7 @@ export default class UserInfo {
     this._profileAvatar.src = avatar;
     this._id = _id;
   }
+  returnUserId() {
+    return this._id;
+  }
 }

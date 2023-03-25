@@ -30,12 +30,11 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  showSavingInProcess(isLoading) {
-    if (isLoading) {
-      this._submitButton.innerHTML = "Сохранение...";
-    } else {
-      this._submitButton.innerHTML = "Сохранить";
-    }
+  showSavingInProcess(buttonText) {
+    this._submitButton.innerHTML = buttonText;
+  }
+  showSavingCompleted(buttonText) {
+    this._submitButton.innerHTML = buttonText;
   }
 
   close() {

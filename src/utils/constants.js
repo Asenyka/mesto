@@ -1,36 +1,3 @@
-import bermamyt from "../images/bermamyt.jpg";
-import divnogorsk from "../images/divnogorsk.jpg";
-import elton from "../images/elton.jpg";
-import khibiny from "../images/khibiny.jpg";
-import ruskeala from "../images/ruskeala.jpg";
-import usyvinskieStolby from "../images/usyvinskie-stolby.jpg";
-const initialCards = [
-  {
-    name: "Бермамыт",
-    link: bermamyt,
-  },
-  {
-    name: "Дивногорск",
-    link: divnogorsk,
-  },
-  {
-    name: "Эльтон",
-    link: elton,
-  },
-  {
-    name: "Хибины",
-    link: khibiny,
-  },
-  {
-    name: "Рускеала",
-    link: ruskeala,
-  },
-  {
-    name: "Усьвинские столбы",
-    link: usyvinskieStolby,
-  },
-];
-
 const validationSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -39,5 +6,28 @@ const validationSettings = {
   inputErrorClass: "popup__input_type_error",
   errorClass: ".popup__error",
 };
-export { initialCards };
+
+const buttonOpenEditProfilePopup = document.querySelector(
+  ".profile__edit-button"
+);
+const avatarOverlay = document.querySelector(".profile__overlay");
+const avatar = document.querySelector(".profile__pic");
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__job");
+const formEditProfile = document.querySelector(".popup__form_edit");
+const formElementCreate = document.querySelector(".popup__form_create");
+const formAvatarUpdate = document.querySelector(".popup__form_update");
+const buttonOpenAddCardPopup = document.querySelector(".profile__add-button");
+
 export { validationSettings };
+export {
+  buttonOpenEditProfilePopup,
+  formElementCreate,
+  formAvatarUpdate,
+  buttonOpenAddCardPopup,
+  avatarOverlay,
+  avatar,
+  profileName,
+  profileJob,
+  formEditProfile,
+};

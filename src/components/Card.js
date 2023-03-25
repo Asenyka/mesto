@@ -1,5 +1,6 @@
 export default class Card {
   constructor(
+    userID,
     template,
     item,
     { handleCardClick },
@@ -7,10 +8,13 @@ export default class Card {
     { sendLike },
     { deleteLike }
   ) {
+    this._userId = userID;
+    this._likes = item.likes;
     this._template = template;
     this._name = item.name;
     this._link = item.link;
-    this._cardID = item._id;
+    this._cardId = item._id;
+    this._cardOwner = item.owner._id;
     this._likeNumber = item.likes.length;
     this._element = this._getTemplate();
     this._image = this._element.querySelector(".places__image");
@@ -30,23 +34,35 @@ export default class Card {
       .content.querySelector(".places__item")
       .cloneNode(true);
   }
-
-  _handleLike() {
-    if (!this._likeButton.classList.contains("places__heart_active")) {
-      this._sendLike(this._cardID);
-      this._likeButton.classList.add("places__heart_active");
-    } else {
-      this._deleteLike(this._cardID);
-      this._likeButton.classList.remove("places__heart_active");
+  _removeBin() {
+    if (this._cardOwner !== this._userId) {
+      this._bin.remove();
     }
   }
-
+  handleLike(likes) {
+    if (!this._likeButton.classList.contains("places__heart_active")) {
+      this._sendLike(this._cardId);
+    } else {
+      this._deleteLike(this._cardId);
+    }
+  }
+  showLikes(likes) {
+    this._likeCounter.textContent = likes.length;
+    this._likeButton.classList.toggle("places__heart_active");
+  }
+  _markIfLiked() {
+    this._likes.forEach((like) => {
+      if (like._id === this._userId) {
+        this._likeButton.classList.add("places__heart_active");
+      }
+    });
+  }
   _addEventListeners() {
     this._bin.addEventListener("click", () => {
       this._handleBinClick();
     });
     this._likeButton.addEventListener("click", () => {
-      this._handleLike();
+      this.handleLike();
     });
 
     this._image.addEventListener("click", () => {
@@ -62,6 +78,8 @@ export default class Card {
     this._image.alt = this._name;
     this._likeCounter.textContent = this._likeNumber;
     this._addEventListeners();
+    this._removeBin();
+    this._markIfLiked();
     return this._element;
   }
 }

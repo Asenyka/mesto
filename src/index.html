@@ -2,27 +2,33 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
   </head>
 
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="<%=require('./images/header__logo.svg')%>" alt="Логотип" />
+      <img
+        class="header__logo"
+        src="<%=require('./images/header__logo.svg')%>"
+        alt="Логотип"
+      />
     </header>
     <main class="main">
       <section class="profile">
-        <div class = "profile__img-container">
+        <div class="profile__img-container">
           <img
-          class="profile__pic"
-          src="<%=require('./images/profile__pic.png')%>"
-          alt="Фото профиля"
-        />
-        <div class="profile__overlay">
-        <img class="profile__update-icon"
-        src="<%=require('./images/change-avatar.svg')%>"
-        alt = "Иконка редактирования профиля">
-      </div>
+            class="profile__pic"
+            src="<%=require('./images/profile__pic.png')%>"
+            alt="Фото профиля"
+          />
+          <div class="profile__overlay">
+            <img
+              class="profile__update-icon"
+              src="<%=require('./images/change-avatar.svg')%>"
+              alt="Иконка редактирования профиля"
+            />
+          </div>
         </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -58,12 +64,12 @@
         </button>
         <h2 class="popup__heading">Вы уверены?</h2>
         <button
-            class="popup__button popup__button_confirm button"
-            type="button"
-          >
-            Да
-          </button>
-          </div>
+          class="popup__button popup__button_confirm button"
+          type="button"
+        >
+          Да
+        </button>
+      </div>
     </section>
     <section class="popup popup_udate-avatar">
       <div class="popup__container">
@@ -83,13 +89,13 @@
           <h2 class="popup__heading">Обновить аватар</h2>
           <input
             class="popup__input popup__input_box_link"
-            id="avatarLink"
+            id="avatar-link"
             type="url"
             name="link"
             placeholder="Ссылка на аватар"
             required
           />
-          <span class="popup__error popup__error_link"></span>
+          <span class="popup__error popup__error_avatar-link"></span>
           <button
             class="popup__button popup__button_create button button_inactive"
             type="submit"
@@ -220,8 +226,8 @@
         <div class="places__title-heart">
           <h2 class="places__title"></h2>
           <div class="places__like">
-          <button class="places__heart button" type="button"></button>
-          <p class="places__like-counter">25</p>
+            <button class="places__heart button" type="button"></button>
+            <p class="places__like-counter">25</p>
           </div>
         </div>
         <button class="places__bin button">
