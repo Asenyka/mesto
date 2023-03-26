@@ -79,7 +79,7 @@ const popupToAddCard = new PopupWithForm(".popup_add-card", {
     api
       .sendCard(cardData)
       .then((cardData) => {
-        cardList.renderer([cardData]);
+        cardList.render([cardData]);
         popupToAddCard.close();
       })
       .catch((err) => {
@@ -158,7 +158,8 @@ function createCard(template, item) {
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, cards]) => {
     userInfo.setUserInfo(user);
-    cardList.renderer(cards);
+    const reversCards = cards.reverse();
+    cardList.render(reversCards);
   })
   .catch((err) => {
     console.log(err);
